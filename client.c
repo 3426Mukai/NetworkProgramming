@@ -16,7 +16,7 @@ void commun(int sock){//原則としてプログラムは上から下に読み�
 	char buf[BUF_SIZE];
 	int len_r;
 	char *message = "banana banana banana banana banana banana banana banana banana banana banana";
-	//send(sock,message,strlen(message),0);
+	send(sock,message,strlen(message),0);
 	
 	if(send(sock,message,strlen(message),0)!=strlen(message))DieWithError("send()send a message of unexpected bytes");
 	
@@ -40,10 +40,6 @@ int main(int argc,char**argv){
 	struct sockaddr_in target;
 	
 	target.sin_family = AF_INET;
-	
-	//target.sin_addr.s_addr = inet_addr("10.13.64.20");
-	//target.sin_port = htons(10001);
-	
 	target.sin_addr.s_addr = inet_addr("server_ipaddr");
 	target.sin_port = htons(server_port);
 	
